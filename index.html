@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Trang tin tức</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- Đã chuyển style nội tuyến sang style.css -->
+</head>
+
+<body>
+
+  <!-- Topbar -->
+  <div class="site-topbar">
+    <div class="container topbar-inner">
+      <div class="text-muted">Thứ <span id="topbarWeekday"></span>, <span id="topbarDate"></span></div>
+      <div class="topbar-links">
+        <a href="#">Liên hệ</a>
+        <a href="#">Quảng cáo</a>
+        <a href="#">Đăng ký nhận tin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header main -->
+  <div class="site-header-main">
+    <div class="container header-inner">
+      <a class="site-brand" href="index.html" title="Trang chủ">
+        <i class="bi bi-lightning-charge-fill brand-icon text-primary"></i>
+        <span>TRANG TIN TỨC</span>
+      </a>
+      <form class="site-search" role="search" id="searchForm">
+        <div class="input-group">
+          <input class="form-control" type="search" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" id="searchInput">
+          <button class="btn btn-outline-primary d-none d-lg-inline" type="submit">Tìm</button>
+        </div>
+      </form>
+      <div class="site-actions">
+        <a href="login.html" id="loginLink" class="btn btn-outline-dark">Đăng nhập</a>
+        <a href="admin.html" id="adminLink" class="btn btn-outline-dark d-none">Quản trị</a>
+        <button id="logoutBtn" class="btn btn-outline-danger d-none">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar danh mục -->
+  <nav class="navbar navbar-expand-lg navbar-light category-bar">
+    <div class="container position-relative">
+      <a class="navbar-brand" href="index.html" title="Trang chủ"><i class="bi bi-house-fill fs-4 text-primary"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <!-- Dropdown items -->
+          <li class="nav-item dropdown" data-key="chinhtri">
+            <a class="nav-link" href="#">Chính trị</a>
+          </li>
+          <li class="nav-item dropdown" data-key="thoisu">
+            <a class="nav-link" href="#">Thời sự</a>
+          </li>
+          <li class="nav-item dropdown" data-key="kinhte">
+            <a class="nav-link" href="#">Kinh tế</a>
+          </li>
+          <li class="nav-item dropdown" data-key="congnghe">
+            <a class="nav-link" href="#">Công nghệ</a>
+          </li>
+          <li class="nav-item dropdown" data-key="doisong">
+            <a class="nav-link" href="#">Đời sống</a>
+          </li>
+          <li class="nav-item dropdown" data-key="thethao">
+            <a class="nav-link" href="#">Thể thao</a>
+          </li>
+          <li class="nav-item dropdown" data-key="giaoduc">
+            <a class="nav-link" href="#">Giáo dục</a>
+          </li>
+          <li class="nav-item dropdown" data-key="dulich">
+            <a class="nav-link" href="#">Du lịch</a>
+          </li>
+          <li class="nav-item dropdown" data-key="vanhoa">
+            <a class="nav-link" href="#">Văn hóa</a>
+          </li>
+          <li class="nav-item dropdown" data-key="xe">
+            <a class="nav-link" href="#">Xe</a>
+          </li>
+        </ul>
+
+        <div class="ms-auto d-lg-none">
+          <a href="login.html" id="loginLink-sm" class="btn btn-outline-dark btn-sm">Đăng nhập</a>
+          <a href="admin.html" id="adminLink-sm" class="btn btn-outline-dark btn-sm d-none">Quản trị</a>
+          <button id="logoutBtn-sm" class="btn btn-outline-danger btn-sm d-none">Đăng xuất</button>
+        </div>
+      </div>
+
+      <!-- Mega Menu dùng chung -->
+      <div id="megaMenu" class="dropdown-menu mega-menu p-4"></div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="container mt-4">
+    <!-- Tin nổi bật (Slideshow) -->
+    <section class="row headline-section align-items-stretch">
+      <div class="col-lg-8 mb-3 mb-lg-0">
+        <div id="customSlideshow" class="rounded position-relative" style="overflow:hidden; height:420px;">
+          <img id="slideImg" src="https://images2.thanhnien.vn/zoom/448_280/528068263637045248/2025/7/28/img5192-17536976549161136809673-0-0-1000-1600-crop-17536976607001077563327.jpeg" class="d-block w-100 headline-img" alt="Slide 1">
+          <div id="slideCaption" class="carousel-caption bg-dark bg-opacity-50 rounded">
+            <h3 class="text-white">Thái Lan - Campuchia tuyên bố ngừng bắn từ đêm nay</h3>
+            <p>Thủ tướng Malaysia Anwar Ibrahim ngày 28.7 thông báo lãnh đạo Thái Lan và Campuchia đã đạt được lệnh ngừng bắn sau cuộc đàm phán tại Malaysia chiều cùng ngày...</p>
+          </div>
+          <button id="slidePrev" class="btn btn-light position-absolute top-50 start-0 translate-middle-y" style="z-index:10;">&#10094;</button>
+          <button id="slideNext" class="btn btn-light position-absolute top-50 end-0 translate-middle-y" style="z-index:10;">&#10095;</button>
+        </div>
+      </div>
+      <div class="col-lg-4 d-flex flex-column justify-content-between">
+        <div class="bg-white rounded shadow-sm p-3 h-100">
+          <h5 class="mb-3">Tin mới</h5>
+          <ul class="list-group">
+            <li class="list-group-item">🏅 Việt Nam thắng Thái Lan, vô địch World Cup cầu mây</li>
+            <li class="list-group-item">🚍 Vụ lật xe khách 10 người chết: Tài xế chạy quá tốc độ</li>
+            <li class="list-group-item">💡 Bộ Chính trị đề xuất mở rộng điện được mua, thuê nhà xã hội</li>
+            <li class="list-group-item">💬 Từ bản hùng ca đến giữ gìn bản sắc dân tộc</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bố cục mới: Bài nổi bật / Mới nhất / Theo danh mục / Lưới tổng hợp -->
+    <hr class="my-4">
+    <section class="mt-3">
+      <h4 class="mb-3">Bài nổi bật</h4>
+      <div id="featuredPosts" class="row g-3 fade-switch"></div>
+      <nav class="d-flex justify-content-center mt-3">
+        <ul class="pagination" id="featuredPagination"></ul>
+      </nav>
+    </section>
+
+    
+  </main>
+
+  <!-- Footer hiện đại -->
+  <footer class="site-footer mt-4">
+    <div class="container footer-top">
+      <div class="row g-4 align-items-start">
+        <div class="col-md-4">
+          <a class="d-inline-flex align-items-center gap-2 text-decoration-none footer-brand" href="index.html">
+            <i class="bi bi-lightning-charge-fill brand-icon text-warning"></i>
+            <span class="fw-bold text-white">TRANG TIN TỨC</span>
+          </a>
+          <p class="mt-2 mb-3">Cập nhật nhanh những tin tức chọn lọc. Dùng cho bài cuối kỳ môn Thiết kế web.</p>
+          <div class="social-links d-flex gap-2">
+            <a href="#" class="text-white-50"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white-50"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-white-50"><i class="bi bi-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-6 col-md-6">
+              <div class="footer-title">Danh mục</div>
+              <ul class="list-unstyled small">
+                <li><a href="#">Chính trị</a></li>
+                <li><a href="#">Thời sự</a></li>
+                <li><a href="#">Kinh tế</a></li>
+                <li><a href="#">Công nghệ</a></li>
+                <li><a href="#">Đời sống</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-6">
+              <div class="footer-title">Khác</div>
+              <ul class="list-unstyled small">
+                <li><a href="#">Thể thao</a></li>
+                <li><a href="#">Giáo dục</a></li>
+                <li><a href="#">Du lịch</a></li>
+                <li><a href="#">Văn hóa</a></li>
+                <li><a href="#">Xe</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-title">Đăng ký nhận tin</div>
+          <form class="footer-newsletter" onsubmit="event.preventDefault(); alert('Đã đăng ký!');">
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="Email của bạn" required>
+              <button class="btn btn-primary" type="submit">Gửi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container d-flex justify-content-between align-items-center small">
+        <div>© 2025 Trang tin tổng hợp</div>
+        <div class="d-flex gap-3">
+          <a href="#">Điều khoản</a>
+          <a href="#">Bảo mật</a>
+          <a href="#">Liên hệ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal xem chi tiết bài viết -->
+  <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postModalTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          <img id="postModalImage" class="img-fluid rounded mb-3" alt="">
+          <div id="postModalMeta" class="text-muted mb-2"></div>
+          <div id="postModalContent" style="white-space: pre-line;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Cập nhật ngày trên topbar + đồng bộ action ở nav nhỏ
+    (function(){
+      // Khởi động đồng hồ realtime trên topbar
+      startTopbarClock();
+      const user = window.Auth?.getCurrentUser?.();
+      const show = (id, visible)=>{ const el = document.getElementById(id); if (!el) return; el.classList[visible?'remove':'add']('d-none'); };
+      if (user && window.Auth?.isAdmin(user)) {
+        show('loginLink-sm', false); show('adminLink-sm', true); show('logoutBtn-sm', true);
+      } else {
+        show('loginLink-sm', true); show('adminLink-sm', false); show('logoutBtn-sm', false);
+      }
+      const logoutSm = document.getElementById('logoutBtn-sm');
+      if (logoutSm) logoutSm.addEventListener('click', ()=>{ Auth.setCurrentUser(null); location.reload(); });
+    })();
+    // Tăng đổ bóng cho category bar khi cuộn
+    (function(){
+      const bar = document.querySelector('.category-bar');
+      const onScroll = ()=>{
+        if (!bar) return;
+        const stuck = window.scrollY > 2;
+        bar.classList[stuck ? 'add' : 'remove']('is-stuck');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+
+</html>

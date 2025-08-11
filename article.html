@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi tiết bài viết</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+    <div id="readingProgressBar"></div>
+  <!-- Topbar -->
+  <div class="site-topbar">
+    <div class="container topbar-inner">
+      <div class="text-muted">Thứ <span id="topbarWeekday"></span>, <span id="topbarDate"></span></div>
+      <div class="topbar-links">
+        <a href="#">Liên hệ</a>
+        <a href="#">Quảng cáo</a>
+        <a href="#">Đăng ký nhận tin</a>
+      </div>
+    </div>
+  </div>
+  <!-- Header main -->
+  <div class="site-header-main">
+    <div class="container header-inner">
+      <a class="site-brand" href="index.html" title="Trang chủ">
+        <i class="bi bi-lightning-charge-fill brand-icon text-primary"></i>
+        <span>TRANG TIN TỨC</span>
+      </a>
+      <form class="site-search" role="search" id="searchForm">
+        <div class="input-group">
+          <input class="form-control" type="search" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" id="searchInput">
+          <button class="btn btn-outline-primary d-none d-lg-inline" type="submit">Tìm</button>
+        </div>
+      </form>
+      <div class="site-actions">
+        <a href="login.html" id="loginLink" class="btn btn-outline-dark">Đăng nhập</a>
+        <a href="admin.html" id="adminLink" class="btn btn-outline-dark d-none">Quản trị</a>
+        <button id="logoutBtn" class="btn btn-outline-danger d-none">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar (giống trang chủ, nhưng chỉ hiển thị ô tìm kiếm và nút đăng nhập/quản trị) -->
+  <nav class="navbar navbar-expand-lg navbar-light category-bar">
+    <div class="container position-relative">
+      <a class="navbar-brand d-flex align-items-center" href="index.html" title="Trang chủ">
+        <i class="bi bi-house-fill fs-4 text-primary me-2"></i>
+        <span class="visually-hidden">Trang chủ</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item dropdown" data-key="chinhtri"><a class="nav-link" href="#">Chính trị</a></li>
+          <li class="nav-item dropdown" data-key="thoisu"><a class="nav-link" href="#">Thời sự</a></li>
+          <li class="nav-item dropdown" data-key="kinhte"><a class="nav-link" href="#">Kinh tế</a></li>
+          <li class="nav-item dropdown" data-key="congnghe"><a class="nav-link" href="#">Công nghệ</a></li>
+          <li class="nav-item dropdown" data-key="doisong"><a class="nav-link" href="#">Đời sống</a></li>
+          <li class="nav-item dropdown" data-key="thethao"><a class="nav-link" href="#">Thể thao</a></li>
+          <li class="nav-item dropdown" data-key="giaoduc"><a class="nav-link" href="#">Giáo dục</a></li>
+          <li class="nav-item dropdown" data-key="dulich"><a class="nav-link" href="#">Du lịch</a></li>
+          <li class="nav-item dropdown" data-key="vanhoa"><a class="nav-link" href="#">Văn hóa</a></li>
+          <li class="nav-item dropdown" data-key="xe"><a class="nav-link" href="#">Xe</a></li>
+        </ul>
+        <div class="ms-auto d-lg-none">
+          <a href="login.html" id="loginLink-sm" class="btn btn-outline-dark btn-sm">Đăng nhập</a>
+          <a href="admin.html" id="adminLink-sm" class="btn btn-outline-dark btn-sm d-none">Quản trị</a>
+          <button id="logoutBtn-sm" class="btn btn-outline-danger btn-sm d-none">Đăng xuất</button>
+        </div>
+      </div>
+      <div id="megaMenu" class="dropdown-menu mega-menu p-4"></div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div id="articleContainer"></div>
+  </div>
+  <!-- Footer hiện đại -->
+  <footer class="site-footer mt-4">
+    <div class="container footer-top">
+      <div class="row g-4 align-items-start">
+        <div class="col-md-4">
+          <a class="d-inline-flex align-items-center gap-2 text-decoration-none footer-brand" href="index.html">
+            <i class="bi bi-lightning-charge-fill brand-icon text-warning"></i>
+            <span class="fw-bold text-white">TRANG TIN TỨC</span>
+          </a>
+          <p class="mt-2 mb-3">Cập nhật nhanh những tin tức chọn lọc. Dùng cho bài cuối kỳ môn Thiết kế web.</p>
+          <div class="social-links d-flex gap-2">
+            <a href="#" class="text-white-50"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white-50"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-white-50"><i class="bi bi-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-6 col-md-6">
+              <div class="footer-title">Danh mục</div>
+              <ul class="list-unstyled small">
+                <li><a href="#">Chính trị</a></li>
+                <li><a href="#">Thời sự</a></li>
+                <li><a href="#">Kinh tế</a></li>
+                <li><a href="#">Công nghệ</a></li>
+                <li><a href="#">Đời sống</a></li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-6">
+              <div class="footer-title">Khác</div>
+              <ul class="list-unstyled small">
+                <li><a href="#">Thể thao</a></li>
+                <li><a href="#">Giáo dục</a></li>
+                <li><a href="#">Du lịch</a></li>
+                <li><a href="#">Văn hóa</a></li>
+                <li><a href="#">Xe</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-title">Đăng ký nhận tin</div>
+          <form class="footer-newsletter" onsubmit="event.preventDefault(); alert('Đã đăng ký!');">
+            <div class="input-group">
+              <input type="email" class="form-control" placeholder="Email của bạn" required>
+              <button class="btn btn-primary" type="submit">Gửi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container d-flex justify-content-between align-items-center small">
+        <div>© 2025 Trang tin tổng hợp</div>
+        <div class="d-flex gap-3">
+          <a href="#">Điều khoản</a>
+          <a href="#">Bảo mật</a>
+          <a href="#">Liên hệ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function(){
+      // Đồng hồ realtime trên topbar
+      startTopbarClock();
+      const user = window.Auth?.getCurrentUser?.();
+      const show = (id, visible)=>{ const el = document.getElementById(id); if (!el) return; el.classList[visible?'remove':'add']('d-none'); };
+      if (user && window.Auth?.isAdmin(user)) {
+        show('loginLink-sm', false); show('adminLink-sm', true); show('logoutBtn-sm', true);
+      } else {
+        show('loginLink-sm', true); show('adminLink-sm', false); show('logoutBtn-sm', false);
+      }
+      const logoutSm = document.getElementById('logoutBtn-sm');
+      if (logoutSm) logoutSm.addEventListener('click', ()=>{ Auth.setCurrentUser(null); location.reload(); });
+    })();
+    // Shadow khi cuộn cho category bar
+    (function(){
+      const bar = document.querySelector('.category-bar');
+      const onScroll = ()=>{
+        if (!bar) return;
+        const stuck = window.scrollY > 2;
+        bar.classList[stuck ? 'add' : 'remove']('is-stuck');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+  <script>
+    (function(){
+      function getPosts() {
+        try { return JSON.parse(localStorage.getItem('posts') || '[]'); } catch { return []; }
+      }
+      const postId = Number(localStorage.getItem('viewPostId'));
+      const posts = getPosts();
+      const post = posts[postId];
+      const container = document.getElementById('articleContainer');
+      if (!post) {
+        container.innerHTML = '<div class="alert alert-warning">Không tìm thấy bài báo.</div>';
+        return;
+      }
+
+      const contentText = String(post.content || '');
+      const summary = post.summary || '';
+      const contentLines = contentText.split('\n');
+      const lead = summary || contentLines[0] || '';
+      const restRaw = summary ? contentText : contentLines.slice(1).join('\n');
+
+      function formatParagraphs(text){
+        const blocks = text
+          .replace(/\r\n/g,'\n')
+          .split(/\n{2,}/)
+          .map(s=>s.trim())
+          .filter(Boolean);
+        return blocks.map(p=>`<p>${p.replace(/\n/g,'<br>')}</p>`).join('');
+      }
+      
+
+      const related = posts
+        .map((p, idx)=> ({...p, _id: idx}))
+        .filter(p=> p._id !== postId && (p.category === post.category))
+        .slice(-12)
+        .reverse();
+      const fallback = posts
+        .map((p, idx)=> ({...p, _id: idx}))
+        .filter(p=> p._id !== postId)
+        .slice(-12)
+        .reverse();
+      const relatedToShow = (related.length ? related : fallback).slice(0, 6);
+
+      const prevId = postId > 0 ? postId - 1 : null;
+      const nextId = postId < posts.length - 1 ? postId + 1 : null;
+
+      
+
+      container.innerHTML = `
+        <div class="row g-4 article-layout">
+          <div class="col-lg-8">
+            <nav class="small text-muted mb-2">
+              <a href="index.html" class="text-decoration-none">Trang chủ</a>
+              <span class="mx-1">/</span>
+              <a href="#" class="text-decoration-none">${post.category}</a>
+            </nav>
+
+            
+
+            <header class="article-head">
+              <div class="text-uppercase text-primary fw-bold mb-2">${post.category}</div>
+              <h1 class="article-title">${post.title}</h1>
+              <div class="article-meta text-muted">
+                <span>${post.date || ''}</span>
+                ${post.author ? `<span class="mx-2">·</span><span>Tác giả: ${post.author}</span>` : ''}
+              </div>
+            </header>
+
+            
+
+            <p class="article-lead">${lead}</p>
+
+            <figure class="article-hero">
+              <img src="${post.image}" alt="${post.category}" class="img-fluid w-100">
+              <figcaption class="small text-muted">${post.title}</figcaption>
+            </figure>
+            <article class="article-content">${formatParagraphs(restRaw)}</article>
+
+            <div class="article-tags mt-4">
+              <span class="badge rounded-pill text-bg-light border">${post.category}</span>
+            </div>
+
+            <div class="author-box mt-4 p-3 border rounded bg-light-subtle d-flex align-items-center gap-3">
+              <div class="author-avatar">${(post.author||'Tác giả')[0] || 'T'}</div>
+              <div>
+                <div class="fw-semibold">${post.author || 'Tác giả ẩn danh'}</div>
+                <div class="small text-muted">${post.category} · ${post.date || ''}</div>
+              </div>
+            </div>
+
+            <div class="row g-3 mt-4">
+              ${prevId !== null ? `
+              <div class="col-12 col-md-6">
+                <a href="#" class="card h-100 text-decoration-none post-nav" data-post-id="${prevId}">
+                  <div class="card-body">
+                    <div class="small text-muted">Bài trước</div>
+                    <div class="fw-semibold">${posts[prevId]?.title || ''}</div>
+                  </div>
+                </a>
+              </div>` : ''}
+              ${nextId !== null ? `
+              <div class="col-12 col-md-6">
+                <a href="#" class="card h-100 text-decoration-none post-nav" data-post-id="${nextId}">
+                  <div class="card-body">
+                    <div class="small text-muted">Bài tiếp theo</div>
+                    <div class="fw-semibold">${posts[nextId]?.title || ''}</div>
+                  </div>
+                </a>
+              </div>` : ''}
+            </div>
+          </div>
+
+          <aside class="col-lg-4">
+            <div class="sticky-top" style="top: 90px;">
+              <div class="mb-4">
+                <h5 class="fw-bold mb-3">Tin liên quan</h5>
+                <div id="relatedList" class="vstack gap-3"></div>
+              </div>
+              <div>
+                <h5 class="fw-bold mb-3">Đọc nhiều</h5>
+                <div id="trendingList" class="vstack gap-3"></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      `;
+
+      // Render related and trending
+      function buildItem(item){
+        return `
+          <a href="#" class="d-flex gap-3 text-decoration-none related-item post-clickable" data-post-id="${item._id}">
+            <img src="${item.image}" class="flex-shrink-0 rounded" width="96" height="64" style="object-fit:cover" alt="${item.category}">
+            <div>
+              <div class="small text-muted mb-1">${item.category}</div>
+              <div class="fw-semibold line-clamp-2">${item.title}</div>
+            </div>
+          </a>`;
+      }
+      const relatedList = document.getElementById('relatedList');
+      relatedList.innerHTML = relatedToShow.map(buildItem).join('');
+      const trendingList = document.getElementById('trendingList');
+      const trending = posts.map((p, idx)=> ({...p, _id: idx})).slice(-8).reverse().slice(0,6);
+      trendingList.innerHTML = trending.map(buildItem).join('');
+
+      
+
+      // Navigate to other posts
+      function goPost(id){ localStorage.setItem('viewPostId', String(id)); window.location.href = 'article.html'; }
+      document.querySelectorAll('.post-clickable,.post-nav').forEach(el=>{
+        el.addEventListener('click', function(e){ e.preventDefault(); const id = Number(this.getAttribute('data-post-id')); if (Number.isFinite(id)) goPost(id); });
+      });
+
+      // Reading progress bar
+      const progressEl = document.getElementById('readingProgressBar');
+      function updateProgress(){
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+        progressEl.style.width = percent + '%';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+    })();
+  </script>
+</body>
+</html>
+
