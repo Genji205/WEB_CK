@@ -565,7 +565,7 @@ window.addEventListener('DOMContentLoaded', function() {
   let slides = buildSlidesFromPosts();
   if (slides.length === 0) {
     slides = [{
-      img: "https://images2.thanhnien.vn/zoom/448_280/528068263637045248/2025/7/28/img5192-17536976549161136809673-0-0-1000-1600-crop-17536976607001077563327.jpeg",
+      img: "",
       title: "Chưa có bài viết",
       desc: "Hãy thêm bài trong mục Quản trị để hiển thị ở đây."
     }];
