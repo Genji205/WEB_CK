@@ -160,7 +160,11 @@ document.addEventListener('click', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
   const params = new URLSearchParams(window.location.search);
   const q = params.get('q') || '';
-  renderHomePosts(q);
+  if (q) {
+    updateSearchResults(q);
+  } else {
+    renderHomePosts(q);
+  }
 });
 const menuContent = {
       chinhtri: `<div class="row">
@@ -169,14 +173,14 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Sự kiện</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Thời luận</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=chinhtri&subcategory=su-kien">Sự kiện</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=chinhtri&subcategory=thoi-luan">Thời luận</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Đối ngoại</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Đối thoại chính sách</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=chinhtri&subcategory=doi-ngoai">Đối ngoại</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=chinhtri&subcategory=doi-thoai-chinh-sach">Đối thoại chính sách</a></li>
             </ul>
           </div>
         </div>
@@ -195,18 +199,18 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Pháp luật</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Lao động - Việc làm</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Phóng sự / Điều tra</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Chống tin giả</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=phap-luat">Pháp luật</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=lao-dong-viec-lam">Lao động - Việc làm</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=phong-su-dieu-tra">Phóng sự / Điều tra</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=chong-tin-gia">Chống tin giả</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Dân sinh</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Quốc phòng</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Y tế</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Quyền được biết</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=dan-sinh">Dân sinh</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=quoc-phong">Quốc phòng</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=y-te">Y tế</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thoisu&subcategory=quyen-duoc-biet">Quyền được biết</a></li>
             </ul>
           </div>
         </div>
@@ -225,18 +229,18 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Kinh tế xanh</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Ngân hàng</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Doanh nghiệp</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Làm giàu</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=kinh-te-xanh">Kinh tế xanh</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=ngan-hang">Ngân hàng</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=doanh-nghiep">Doanh nghiệp</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=lam-giau">Làm giàu</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Chứng khoán</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Chính sách - Phát triển</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Khát vọng Việt Nam</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Địa Ốc</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=chung-khoan">Chứng khoán</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=chinh-sach-phat-trien">Chính sách - Phát triển</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=khat-vong-viet-nam">Khát vọng Việt Nam</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=kinhte&subcategory=dia-oc">Địa Ốc</a></li>
             </ul>
           </div>
         </div>
@@ -255,16 +259,16 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Tin tức công nghệ</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Sản phẩm</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Xu hướng - chuyển đổi số</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=congnghe&subcategory=tin-tuc-cong-nghe">Tin tức công nghệ</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=congnghe&subcategory=san-pham">Sản phẩm</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=congnghe&subcategory=xu-huong-chuyen-doi-so">Xu hướng - chuyển đổi số</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Blockchain</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Game</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">AI</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=congnghe&subcategory=blockchain">Blockchain</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=congnghe&subcategory=game">Game</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=congnghe&subcategory=ai">AI</a></li>
 
             </ul>
           </div>
@@ -284,17 +288,17 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Tết yêu thương</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Gia Đình</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Cộng đồng</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Sống khỏe</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=doisong&subcategory=tet-yeu-thuong">Tết yêu thương</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=doisong&subcategory=gia-dinh">Gia Đình</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=doisong&subcategory=cong-dong">Cộng đồng</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=doisong&subcategory=song-khoe">Sống khỏe</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Người sống quanh ta</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Ẩm thực</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Một nửa thế giới</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=doisong&subcategory=nguoi-song-quanh-ta">Người sống quanh ta</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=doisong&subcategory=am-thuc">Ẩm thực</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=doisong&subcategory=mot-nua-the-gioi">Một nửa thế giới</a></li>
 
             </ul>
           </div>
@@ -314,16 +318,16 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Bóng đá Thanh niên Sinh viên</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Bóng rổ</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Các môn khác</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thethao&subcategory=bong-da-thanh-nien-sinh-vien">Bóng đá Thanh niên Sinh viên</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thethao&subcategory=bong-ro">Bóng rổ</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thethao&subcategory=cac-mon-khac">Các môn khác</a></li>
 
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Thể thao & Cộng đồng</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Thể hình</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thethao&subcategory=the-thao-cong-dong">Thể thao & Cộng đồng</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=thethao&subcategory=the-hinh">Thể hình</a></li>
             </ul>
           </div>
         </div>
@@ -342,18 +346,18 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Tuyển sinh</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Du học</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Phụ huynh</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Cẩm nang tuyển sinh 2025</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=tuyen-sinh">Tuyển sinh</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=du-hoc">Du học</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=phu-huynh">Phụ huynh</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=cam-nang-tuyen-sinh-2025">Cẩm nang tuyển sinh 2025</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Chọn nghề - Chọn trường</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Nhà trường</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Tra cứu điểm thi</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Ôn thi tốt nghiệp</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=chon-nghe-chon-truong">Chọn nghề - Chọn trường</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=nha-truong">Nhà trường</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=tra-cuu-diem-thi">Tra cứu điểm thi</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=giaoduc&subcategory=on-thi-tot-nghiep">Ôn thi tốt nghiệp</a></li>
             </ul>
           </div>
         </div>
@@ -372,16 +376,16 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Bất động sản</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Tin tức - Sự kiện</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Chơi gì, ăn đâu, đi thế nào?</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=dulich&subcategory=bat-dong-san">Bất động sản</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=dulich&subcategory=tin-tuc-su-kien">Tin tức - Sự kiện</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=dulich&subcategory=choi-gi-an-dau-di-the-nao">Chơi gì, ăn đâu, đi thế nào?</a></li>
 
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Khám phá</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Câu chuyện du lịch</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=dulich&subcategory=kham-pha">Khám phá</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=dulich&subcategory=cau-chuyen-du-lich">Câu chuyện du lịch</a></li>
 
             </ul>
           </div>
@@ -401,18 +405,18 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Sống đẹp</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Khảo cứu</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Sách hay</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Nghĩa tình miền tây</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=song-dep">Sống đẹp</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=khao-cuu">Khảo cứu</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=sach-hay">Sách hay</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=nghia-tinh-mien-tay">Nghĩa tình miền tây</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Câu chuyện văn hóa</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Xem - Nghe</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Món ngon Hà Nội</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Hào khí miền Đông</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=cau-chuyen-van-hoa">Câu chuyện văn hóa</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=xem-nghe">Xem - Nghe</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=mon-ngon-ha-noi">Món ngon Hà Nội</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=vanhoa&subcategory=hao-khi-mien-dong">Hào khí miền Đông</a></li>
             </ul>
           </div>
         </div>
@@ -431,17 +435,17 @@ const menuContent = {
         <div class="row">
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Thị trường</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Đánh giá xe</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Video</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Xe - Đời sống</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=xe&subcategory=thi-truong">Thị trường</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=xe&subcategory=danh-gia-xe">Đánh giá xe</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=xe&subcategory=video">Video</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=xe&subcategory=xe-doi-song">Xe - Đời sống</a></li>
             </ul>
           </div>
           <div class="col-6">
             <ul class="list-unstyled">
-              <li><a class="dropdown-item fw-bold" href="#">Xe điện</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Tư vấn</a></li>
-              <li><a class="dropdown-item fw-bold" href="#">Xe - Giao thông</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=xe&subcategory=xe-dien">Xe điện</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=xe&subcategory=tu-van">Tư vấn</a></li>
+              <li><a class="dropdown-item fw-bold" href="category.html?category=xe&subcategory=xe-giao-thong">Xe - Giao thông</a></li>
 
             </ul>
           </div>
@@ -530,7 +534,82 @@ function filterSidebarNews(keyword) {
   }
 }
 
+// Cập nhật hàm tìm kiếm để cũng lọc tin mới nhất
+function updateSearchResults(keyword) {
+  renderHomePosts(keyword);
+  filterSidebarNews(keyword);
+}
+
+// Hiển thị tin tức mới nhất từ các bài viết được đăng lên
+function renderLatestNews() {
+  const posts = getPosts();
+  const newsList = document.querySelector('ul.list-group');
+  if (!newsList) return;
+  
+  // Lấy 4 bài viết mới nhất
+  const latestPosts = posts.slice(-4).reverse();
+  
+  // Xóa nội dung cũ
+  newsList.innerHTML = '';
+  
+  if (latestPosts.length === 0) {
+    // Nếu chưa có bài viết nào
+    const emptyItem = document.createElement('li');
+    emptyItem.className = 'list-group-item text-muted';
+    emptyItem.textContent = 'Chưa có tin tức mới';
+    newsList.appendChild(emptyItem);
+    return;
+  }
+  
+  // Tạo danh sách tin mới từ các bài viết
+  latestPosts.forEach((post, index) => {
+    const listItem = document.createElement('li');
+    listItem.className = 'list-group-item latest-news-item';
+    listItem.setAttribute('data-post-id', posts.indexOf(post));
+    
+    // Emoji theo danh mục
+    const categoryEmoji = {
+      'Chính trị': '🏛️',
+      'Thời sự': '📰',
+      'Kinh tế': '💰',
+      'Công nghệ': '💻',
+      'Đời sống': '🏠',
+      'Thể thao': '⚽',
+      'Giáo dục': '📚',
+      'Du lịch': '✈️',
+      'Văn hóa': '🎭',
+      'Xe': '🚗'
+    };
+    
+    const emoji = categoryEmoji[post.category] || '📄';
+    const title = post.title.length > 60 ? post.title.substring(0, 60) + '...' : post.title;
+    
+    listItem.setAttribute('data-emoji', emoji);
+    listItem.textContent = title;
+    
+    // Click để xem chi tiết bài viết
+    listItem.addEventListener('click', function() {
+      const postId = Number(this.getAttribute('data-post-id'));
+      localStorage.setItem('viewPostId', String(postId));
+      window.location.href = 'article.html';
+    });
+    
+    newsList.appendChild(listItem);
+  });
+}
+
+// Cập nhật tin mới khi có thay đổi
+function refreshLatestNews() {
+  const currentVersion = localStorage.getItem('posts_version') || '0';
+  if (refreshLatestNews.__lastVersion === currentVersion) return;
+  refreshLatestNews.__lastVersion = currentVersion;
+  renderLatestNews();
+}
+
 window.addEventListener('DOMContentLoaded', function() {
+  // Khởi tạo tin mới nhất
+  renderLatestNews();
+  
   const searchForm = document.getElementById('searchForm');
   const searchInput = document.getElementById('searchInput');
   if (searchForm) {
@@ -539,7 +618,7 @@ window.addEventListener('DOMContentLoaded', function() {
       const keyword = (searchInput?.value || '').trim();
       const onHome = !!document.getElementById('dynamicPosts');
       if (onHome) {
-        renderHomePosts(keyword);
+        updateSearchResults(keyword);
         const url = keyword ? `?q=${encodeURIComponent(keyword)}` : window.location.pathname;
         window.history.replaceState(null, '', url);
       } else {
@@ -556,10 +635,11 @@ window.addEventListener('DOMContentLoaded', function() {
     const posts = getPostsForSlideshow();
     const latest = posts.slice(-3).reverse();
     if (latest.length === 0) return [];
-    return latest.map(p => ({
+    return latest.map((p, index) => ({
       img: p.image,
       title: p.title,
-      desc: (p.summary && p.summary.trim()) ? p.summary.trim() : (p.content || '').replace(/\s+/g,' ').trim().slice(0, 140) + (((p.content||'').length>140)?'...':'')
+      desc: (p.summary && p.summary.trim()) ? p.summary.trim() : (p.content || '').replace(/\s+/g,' ').trim().slice(0, 140) + (((p.content||'').length>140)?'...':''),
+      postId: posts.indexOf(p) // Thêm post ID để có thể chuyển đến bài viết
     }));
   }
   let slides = buildSlidesFromPosts();
@@ -567,7 +647,8 @@ window.addEventListener('DOMContentLoaded', function() {
     slides = [{
       img: "",
       title: "Chưa có bài viết",
-      desc: "Hãy thêm bài trong mục Quản trị để hiển thị ở đây."
+      desc: "Hãy thêm bài trong mục Quản trị để hiển thị ở đây.",
+      postId: -1 // Không có bài viết
     }];
   }
   let slideIndex = 0;
@@ -575,6 +656,19 @@ window.addEventListener('DOMContentLoaded', function() {
   const slideCaption = document.getElementById('slideCaption');
   let slideTimer;
   let lastDirection = 1; // 1: next (phải), -1: prev (trái)
+
+  // Hàm xử lý click vào slideshow để chuyển đến bài viết
+  function handleSlideClick() {
+    if (slides[slideIndex] && slides[slideIndex].postId >= 0) {
+      // Reset timer khi người dùng tương tác
+      if (slideTimer) {
+        clearInterval(slideTimer);
+        slideTimer = setInterval(() => showSlide(slideIndex + 1), 4000);
+      }
+      localStorage.setItem('viewPostId', String(slides[slideIndex].postId));
+      window.location.href = 'article.html';
+    }
+  }
 
 function showSlide(idx, direction = 1) {
   // Xác định hướng chuyển động đặc biệt cho đầu/cuối
@@ -665,6 +759,11 @@ function showSlide(idx, direction = 1) {
     slideImg.style.opacity = 1;
     slideCaption.innerHTML = `<h3 class=\"text-white\">${slides[slideIndex].title}</h3><p>${slides[slideIndex].desc}</p>`;
     slideCaption.style.opacity = 1;
+    
+    // Đảm bảo event listeners vẫn hoạt động sau khi cập nhật nội dung
+    slideImg.onclick = handleSlideClick;
+    slideCaption.onclick = handleSlideClick;
+    
     // Xóa ảnh/caption tạm
     newImg.remove();
     newCaption.remove();
@@ -682,21 +781,60 @@ function showSlide(idx, direction = 1) {
     slideIndex = 0;
     if (slideImg && slideCaption) {
       showSlide(0, lastDirection);
+      // Đảm bảo event listeners được thiết lập lại
+      slideImg.onclick = handleSlideClick;
+      slideCaption.onclick = handleSlideClick;
     }
   }
   // Lắng nghe thay đổi từ tab khác
   window.addEventListener('storage', (e) => {
     if (e.key === 'posts' || e.key === 'posts_version') {
       refreshSlidesIfChanged();
+      refreshLatestNews();
     }
   });
   // Kiểm tra định kỳ trong cùng tab
   setInterval(refreshSlidesIfChanged, 3000);
+  setInterval(refreshLatestNews, 3000);
 
   // Chỉ chạy slideshow tự động nếu có slideImg và slideCaption
   if (slideImg && slideCaption) {
     refreshSlidesIfChanged();
     showSlide(0);
     slideTimer = setInterval(() => showSlide(slideIndex + 1), 4000);
+    
+    // Thêm event listeners cho click vào slideshow
+    slideImg.addEventListener('click', handleSlideClick);
+    slideCaption.addEventListener('click', handleSlideClick);
+    
+    // Thêm event listeners cho nút prev/next
+    const slidePrev = document.getElementById('slidePrev');
+    const slideNext = document.getElementById('slideNext');
+    
+    if (slidePrev) {
+      slidePrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        showSlide(slideIndex - 1, -1);
+        // Reset timer khi người dùng tương tác
+        if (slideTimer) {
+          clearInterval(slideTimer);
+          slideTimer = setInterval(() => showSlide(slideIndex + 1), 4000);
+        }
+      });
+    }
+    
+    if (slideNext) {
+      slideNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        showSlide(slideIndex + 1, 1);
+        // Reset timer khi người dùng tương tác
+        if (slideTimer) {
+          clearInterval(slideTimer);
+          slideTimer = setInterval(() => showSlide(slideIndex + 1), 4000);
+        }
+      });
+    }
   }
 });
